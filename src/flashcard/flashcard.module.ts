@@ -5,16 +5,18 @@ import { FLASHCARD_PACKAGE_NAME, FLASHCARD_SERVICE_NAME } from './flashcard.pb';
 
 @Module({
   imports: [
-    ClientsModule.register([{
-      name: FLASHCARD_SERVICE_NAME,
-      transport: Transport.GRPC,
-      options: {
-        url: '0.0.0.0:50052',
-        'package': FLASHCARD_PACKAGE_NAME,
-        protoPath: 'node_modules/soora-sr-proto/proto/flashcard.proto'
-      }
-    }])
+    ClientsModule.register([
+      {
+        name: FLASHCARD_SERVICE_NAME,
+        transport: Transport.GRPC,
+        options: {
+          url: '0.0.0.0:50052',
+          package: FLASHCARD_PACKAGE_NAME,
+          protoPath: 'node_modules/soora-sr-proto/proto/flashcard.proto',
+        },
+      },
+    ]),
   ],
-  controllers: [FlashcardController]
+  controllers: [FlashcardController],
 })
-export class FlashcardModule { }
+export class FlashcardModule {}

@@ -19,7 +19,12 @@ export interface CreateFlashcardRequest {
 export interface CreateFlashcardResponse {
   status: number;
   error: string[];
+  data: CreateFlashcardData | undefined;
+}
+
+export interface CreateFlashcardData {
   id: string;
+  createdDate: string;
 }
 
 export interface FindOneData {
@@ -38,7 +43,7 @@ export interface OrderBy {
 }
 
 export interface FindAllArgsRequest {
-  orderBy: OrderBy | undefined;
+  orderBy?: OrderBy | undefined;
 }
 
 export interface FindOneResponse {
