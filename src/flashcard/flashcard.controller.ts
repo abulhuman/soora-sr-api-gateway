@@ -103,4 +103,9 @@ export class FlashcardController implements OnModuleInit {
     return this.svc.createAttribute(body);
   }
 
+  @Patch('/:id/review')
+  private async reviewFlashcard(@Body() body: UpdateFlashcardRequest): Promise<Observable<UpdateFlashcardResponse>> {
+    return this.svc.reviewFlashcard(body);
+  }
+
 }
