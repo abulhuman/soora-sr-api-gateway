@@ -66,7 +66,7 @@
 					"response": []
 				},
 				{
-					"name": "Validate",
+					"name": "3. Validate",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -153,6 +153,119 @@
 			"name": "Flashcard",
 			"item": [
 				{
+					"name": "Find All",
+					"item": [
+						{
+							"name": "Unfiltered",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/flashcard",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"flashcard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grouped",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"groupBy\": {\r\n        \"attribute\": {\r\n            \"key\": \"difficulty\",\r\n            \"value\": \"hard\"\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/flashcard",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"flashcard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ordered",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"orderBy\": {\r\n        \"createdDate\": \"ASC\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/flashcard",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"flashcard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Visible Only",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isVisible\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/flashcard",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"flashcard"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Create",
 					"request": {
 						"auth": {
@@ -191,40 +304,27 @@
 				{
 					"name": "Find One",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/flashcard?id=650bd844a50c6682b35c6f1d",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"flashcard"
-							],
-							"query": [
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "id",
-									"value": "650bd844a50c6682b35c6f1d"
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGJkYTIyMmU2ZTU1YmJlOWQxNTEwMSIsImVtYWlsIjoiYWRlbTFAZ21haWwuY29tIiwiaWF0IjoxNjk1MzYxMzAyLCJleHAiOjE2OTUzNjQ5MDJ9.GR1QSFo_xdw_FdV_sb6qAmEe5P-XTR0NSwsoTnTq6FU",
+									"type": "string"
 								}
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Find All",
-					"request": {
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/flashcard",
+							"raw": "localhost:3000/flashcard/650bdc7ea0e140a7fbef5769",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"flashcard"
+								"flashcard",
+								"650bdc7ea0e140a7fbef5769"
 							]
 						}
 					},
@@ -303,8 +403,195 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Share Link",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGJkYTIyMmU2ZTU1YmJlOWQxNTEwMSIsImVtYWlsIjoiYWRlbTFAZ21haWwuY29tIiwiaWF0IjoxNjk1MzU1MzMxLCJleHAiOjE2OTUzNTg5MzF9.69FFX7Hxci_iwG93k3DlBb_awm6SMVzKmbKvLkUF6TA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"650bd844a50c6682b35c6f1d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard/share/link",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard",
+								"share",
+								"link"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Shared",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGJkYTIyMmU2ZTU1YmJlOWQxNTEwMSIsImVtYWlsIjoiYWRlbTFAZ21haWwuY29tIiwiaWF0IjoxNjk1MzU1MzMxLCJleHAiOjE2OTUzNTg5MzF9.69FFX7Hxci_iwG93k3DlBb_awm6SMVzKmbKvLkUF6TA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGJkYTIyMmU2ZTU1YmJlOWQxNTEwMSIsImVtYWlsIjoiYWRlbTFAZ21haWwuY29tIiwiaWF0IjoxNjk1MzQ4MjkxLCJleHAiOjE2OTUzNTE4OTF9.FFnMz2YKStdPCwlAexkdorIFyExzMWKGqumNlneCnSo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"650bd844a50c6682b35c6f1d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard/view-shared/650d13e397c79f3da8d144b8",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard",
+								"view-shared",
+								"650d13e397c79f3da8d144b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Attribute",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGJkYTIyMmU2ZTU1YmJlOWQxNTEwMSIsImVtYWlsIjoiYWRlbTFAZ21haWwuY29tIiwiaWF0IjoxNjk1MzY2MjAwLCJleHAiOjE2OTUzNjk4MDB9.No1GwFEbX-OpPd_Q4QHAPjZfC3nrzMCPULAyIqXnDDA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flashcardId\": \"650bd7169153c6293c2da1a7\",\r\n    \"key\": \"difficulty\",\r\n    \"value\": \"hard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard/650bdc7ea0e140a7fbef5769/attribute",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard",
+								"650bdc7ea0e140a7fbef5769",
+								"attribute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Flashcard",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"650bd7389153c6293c2da1ab\",\r\n    \"reviewStatus\": \"EASY\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard/650bd7389153c6293c2da1ab/review",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard",
+								"650bd7389153c6293c2da1ab",
+								"review"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGJkYTIyMmU2ZTU1YmJlOWQxNTEwMSIsImVtYWlsIjoiYWRlbTFAZ21haWwuY29tIiwiaWF0IjoxNjk1Mzg0ODUzLCJleHAiOjE2OTUzODg0NTN9.kJfG7MuwnxP5U5r4I9MqOjtfYFjjkLS-fv9GeeWixsQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
