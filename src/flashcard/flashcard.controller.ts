@@ -16,6 +16,7 @@ import {
   FLASHCARD_SERVICE_NAME,
   FindAllArgsRequest,
   FindAllResponse,
+  FindOneRequest,
   FindOneResponse,
   FlashcardServiceClient,
   UpdateFlashcardRequest,
@@ -77,7 +78,7 @@ export class FlashcardController implements OnModuleInit {
   @Delete(':id')
   private async deleteFlashcard(
     @Param('id' /** place some Mongoose.ObjectId validator here */) id: string,
-    @Body() body: UpdateFlashcardRequest,
+    @Body() body: FindOneRequest,
   ): Promise<Observable<UpdateFlashcardResponse>> {
     this.svc.findOne({ id });
     body.id = id;

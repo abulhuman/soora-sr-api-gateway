@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "d83e8160-e8c3-430a-bca8-6675e332602d",
+		"name": "Soora",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27965183"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "1. Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"adem1@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Login",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"adem1@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "secret",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNjgzNDksImV4cCI6MTY5NTI3MTk0OX0.myZjvZ983rXvy5a7enyEUEVW3oCWRJxsJ4rRilMDYJk",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"adem@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNzA2MTIsImV4cCI6MTY5NTI3MDYyN30.-FnfBM0TfWO5_YeMNvvp54aVr-E0ezhnLCh5zErbdRI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/validate?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNzA2MTIsImV4cCI6MTY5NTI3MDYyN30.-FnfBM0TfWO5_YeMNvvp54aVr-E0ezhnLCh5zErbdRI",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNzA2MTIsImV4cCI6MTY5NTI3MDYyN30.-FnfBM0TfWO5_YeMNvvp54aVr-E0ezhnLCh5zErbdRI"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flashcard",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNzQ0NTMsImV4cCI6MTY5NTI3ODA1M30.L2BF8dbb9tnsu4wdp5FHSPS1E2QAvTwOg6n3agQC-60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\": \"KTC\",\r\n    \"answer\": \"Kingston Technology Company\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/flashcard?id=650bd844a50c6682b35c6f1d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "650bd844a50c6682b35c6f1d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/flashcard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNzQ0NTMsImV4cCI6MTY5NTI3ODA1M30.L2BF8dbb9tnsu4wdp5FHSPS1E2QAvTwOg6n3agQC-60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"650bd844a50c6682b35c6f1d\",\r\n    \"question\": \"KFC\",\r\n    \"answer\": \"Kingston Fried Chicken\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard/650bd844a50c6682b35c6f1d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard",
+								"650bd844a50c6682b35c6f1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGIzNjM3ZGQzNjFkOWQxNWQ5MjM1MCIsImVtYWlsIjoiYWRlbUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyNzQ0NTMsImV4cCI6MTY5NTI3ODA1M30.L2BF8dbb9tnsu4wdp5FHSPS1E2QAvTwOg6n3agQC-60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"650bd844a50c6682b35c6f1d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/flashcard/650bd844a50c6682b35c6f1d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"flashcard",
+								"650bd844a50c6682b35c6f1d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
