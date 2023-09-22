@@ -11,6 +11,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import {
+  CreateAttributeRequest,
+  CreateAttributeResponse,
   CreateFlashcardRequest,
   CreateFlashcardResponse,
   FLASHCARD_SERVICE_NAME,
@@ -94,6 +96,11 @@ export class FlashcardController implements OnModuleInit {
   @Get('view-shared/:token')
   private async viewFromShareLink(@Param('token') token: string): Promise<Observable<FindAllResponse>> {
     return this.svc.viewFromShareLink({ token });
+  }
+
+  @Post('/:id/attribute')
+  private async createAttribute(@Body() body: CreateAttributeRequest): Promise<Observable<CreateAttributeResponse>> {
+    return this.svc.createAttribute(body);
   }
 
 }
