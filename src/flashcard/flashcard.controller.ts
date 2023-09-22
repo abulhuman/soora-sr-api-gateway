@@ -19,6 +19,7 @@ import {
   FindOneRequest,
   FindOneResponse,
   FlashcardServiceClient,
+  GetShareLinkResponse,
   UpdateFlashcardRequest,
   UpdateFlashcardResponse,
 } from './flashcard.pb';
@@ -84,4 +85,15 @@ export class FlashcardController implements OnModuleInit {
     body.id = id;
     return this.svc.deleteFlashcard(body);
   }
+
+  @Get('share/link')
+  private async getShareLink(@UserId() userId: string): Promise<Observable<GetShareLinkResponse>> {
+    return this.svc.getShareLink({ userId });
+  }
+
+  @Get('view-shared/:token')
+  private async viewFromShareLink(@Param('token') token: string): Promise<Observable<FindAllResponse>> {
+    return this.svc.viewFromShareLink({ token });
+  }
+
 }
